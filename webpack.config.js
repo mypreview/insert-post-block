@@ -93,7 +93,7 @@ const config = {
 			injectPolyfill: true,
 		} ),
 		new LicenseCheckerWebpackPlugin( {
-			outputFilename: 'credits.txt',
+			outputFilename: './../credits.txt',
 		} ),
 		new WebpackNotifierPlugin( {
 			title: package,

@@ -2,6 +2,7 @@
  * External dependencies
  */
 import edit from './components/Edit.jsx';
+import attributes from './utils/attributes';
 import { PREFIX } from './utils/prefix';
 import './utils/category';
 
@@ -13,6 +14,7 @@ const { registerBlockType } = wp.blocks;
 
 registerBlockType( `${ PREFIX }/content`, {
 	edit,
+	attributes,
 	category: 'mypreview',
 	title: _x( 'Insert Post', 'block name', 'insert-post-block' ),
 	description: _x( '', 'block description', 'insert-post-block' ),

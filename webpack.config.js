@@ -12,6 +12,7 @@ const ProgressBarPlugin = require( 'progress-bar-webpack-plugin' );
 const TerserPlugin = require( 'terser-webpack-plugin' );
 const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
 const WebpackNotifierPlugin = require( 'webpack-notifier' );
+const LicenseCheckerWebpackPlugin = require( 'license-checker-webpack-plugin' );
 const chalk = require( 'chalk' );
 const package = 'Insert Post Block';
 const jsonp = 'webpackInsertPostBlockJsonp';
@@ -77,10 +78,12 @@ const config = {
 		],
 	},
 	plugins: [
-		new CleanWebpackPlugin(),
+		new CleanWebpackPlugin( {
+			cleanStaleWebpackAssets: false,
+		} ),
 		new BundleAnalyzerPlugin( {
 			openAnalyzer: false,
-			analyzerPort: 4001,
+			analyzerPort: 8001,
 		} ),
 		new ProgressBarPlugin( {
 			format:
@@ -88,6 +91,9 @@ const config = {
 		} ),
 		new DependencyExtractionWebpackPlugin( {
 			injectPolyfill: true,
+		} ),
+		new LicenseCheckerWebpackPlugin( {
+			outputFilename: 'credits.txt',
 		} ),
 		new WebpackNotifierPlugin( {
 			title: package,

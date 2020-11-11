@@ -20,6 +20,7 @@ registerBlockType( `${ PREFIX }/content`, {
 		src: 'media-text',
 	},
 	supports: {
+		anchor: true,
 		reusable: false,
 		html: false,
 	},

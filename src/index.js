@@ -1,4 +1,9 @@
 /**
+ * Stylesheet dependencies.
+ */
+import './style.css';
+
+/**
  * External dependencies
  */
 import edit from './components/Edit.jsx';

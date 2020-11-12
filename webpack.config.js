@@ -6,11 +6,14 @@
  * @package     insert-post-block
  */
 const path = require( 'path' );
+const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' );
+const OptimizeCSSAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
 const { CleanWebpackPlugin } = require( 'clean-webpack-plugin' );
 const { BundleAnalyzerPlugin } = require( 'webpack-bundle-analyzer' );
 const ProgressBarPlugin = require( 'progress-bar-webpack-plugin' );
 const TerserPlugin = require( 'terser-webpack-plugin' );
 const DependencyExtractionWebpackPlugin = require( '@wordpress/dependency-extraction-webpack-plugin' );
+const WebpackRTLPlugin = require( 'webpack-rtl-plugin' );
 const WebpackNotifierPlugin = require( 'webpack-notifier' );
 const LicenseCheckerWebpackPlugin = require( 'license-checker-webpack-plugin' );
 const chalk = require( 'chalk' );
@@ -62,6 +65,20 @@ const config = {
 					},
 				],
 			},
+			{
+				test: /\.css$/,
+				use: [
+					'style-loader',
+					{
+						loader: MiniCssExtractPlugin.loader,
+						options: {
+							importLoaders: 1,
+						},
+					},
+					'css-loader',
+					'postcss-loader',
+				],
+			},
 		],
 	},
 	externals: {
@@ -75,6 +92,11 @@ const config = {
 			new TerserPlugin( {
 				extractComments: false,
 			} ),
+			new OptimizeCSSAssetsPlugin( {
+				cssProcessorPluginOptions: {
+					preset: [ 'default', { discardComments: { removeAll: true } } ],
+				},
+			} ),
 		],
 	},
 	plugins: [
@@ -84,6 +106,12 @@ const config = {
 		new BundleAnalyzerPlugin( {
 			openAnalyzer: false,
 			analyzerPort: 8001,
+		} ),
+		new MiniCssExtractPlugin( {
+			filename: '[name].css',
+		} ),
+		new WebpackRTLPlugin( {
+			filename: '[name]-rtl.css',
 		} ),
 		new ProgressBarPlugin( {
 			format:

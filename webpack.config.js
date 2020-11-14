@@ -44,5 +44,5 @@ module.exports = {
 			alwaysNotify: true,
 			skipFirstNotification: true,
 		} ),
-	]
+	],
 };

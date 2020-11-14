@@ -11,6 +11,6 @@ module.exports = ( { env } ) => ( {
 		'postcss-hidden': {},
 		'postcss-selector-not': {},
 		'postcss-combine-media-query': {},
-		autoprefixer: { grid: true, }
+		autoprefixer: { grid: true },
 	},
 } );

@@ -3,18 +3,19 @@
  * for `Insert Post Block` plugin reside in this file.
  */
 
+const defaultConfig = require( './node_modules/@wordpress/scripts/config/webpack.config.js' );
+const path = require( 'path' );
 const chalk = require( 'chalk' );
 const ProgressBarPlugin = require( 'progress-bar-webpack-plugin' );
 const WebpackRTLPlugin = require( 'webpack-rtl-plugin' );
 const WebpackNotifierPlugin = require( 'webpack-notifier' );
 const OptimizeCSSAssetsPlugin = require( 'optimize-css-assets-webpack-plugin' );
 const LicenseCheckerWebpackPlugin = require( 'license-checker-webpack-plugin' );
-const defaultConfig = require( './node_modules/@wordpress/scripts/config/webpack.config.js' );
 
 module.exports = {
 	...defaultConfig,
-	module: {
-		...defaultConfig.module,
+	entry: {
+		block: path.resolve( process.cwd(), 'src', 'index.js' ),
 	},
 	optimization: {
 		...defaultConfig.optimization,

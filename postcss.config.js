@@ -1,5 +1,6 @@
 module.exports = ( { env } ) => ( {
 	plugins: {
+		'postcss-import': {},
 		'postcss-nested-ancestors': {},
 		'postcss-nested': {},
 		'postcss-if-media': {},
@@ -10,6 +11,6 @@ module.exports = ( { env } ) => ( {
 		'postcss-hidden': {},
 		'postcss-selector-not': {},
 		'postcss-combine-media-query': {},
-		autoprefixer: {},
+		autoprefixer: { grid: true, }
 	},
 } );

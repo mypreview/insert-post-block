@@ -6,7 +6,7 @@ import './style.css';
 /**
  * External dependencies
  */
-import edit from './components/Edit.jsx';
+import edit from './components/edit';
 import attributes from './utils/attributes';
 import { PREFIX } from './utils/prefix';
 import './utils/category';

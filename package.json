@@ -30,7 +30,11 @@
 		"packages-update": "wp-scripts packages-update",
 		"dev": "wp-scripts start",
 		"test:e2e": "wp-scripts test-e2e",
-		"test:unit": "wp-scripts test-unit-js"
+		"test:unit": "wp-scripts test-unit-js",
+		"lint:wpcs": "composer lint:wpcs",
+		"lint:wpcs-fix": "composer lint:wpcbf",
+		"lint:php": "composer lint:php",
+		"makepot": "composer make-pot"
 	},
 	"devDependencies": {
 		"@babel/plugin-proposal-class-properties": "^7.12.1",

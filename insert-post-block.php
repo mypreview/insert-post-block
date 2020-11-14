@@ -149,13 +149,18 @@ if ( ! class_exists( 'Insert_Post_Block' ) ) :
 		 * @return   void
 		 */
 		public function editor_enqueue() {
-			$script_path       = sprintf( '%sdist/script.js', INSERT_POST_BLOCK_DIR_PATH );
-			$script_asset_path = sprintf( '%sdist/script.asset.php', INSERT_POST_BLOCK_DIR_PATH );
+			$style_url         = sprintf( '%sbuild/style-block.css', INSERT_POST_BLOCK_DIR_URL );
+			$script_url        = sprintf( '%sbuild/script.js', INSERT_POST_BLOCK_DIR_URL );
+			$script_path       = sprintf( '%sbuild/script.js', INSERT_POST_BLOCK_DIR_PATH );
+			$script_asset_path = sprintf( '%sbuild/script.asset.php', INSERT_POST_BLOCK_DIR_PATH );
 			$script_asset      = file_exists( $script_asset_path ) ? require $script_asset_path : array(
 				'dependencies' => array( 'wp-blocks', 'wp-dom-ready', 'lodash' ),
 				'version'      => filemtime( $script_path ),
 			);
-			$script_url        = sprintf( '%sdist/script.js', INSERT_POST_BLOCK_DIR_URL );
+
+			// Enqueue the style.
+			wp_enqueue_style( INSERT_POST_BLOCK_SLUG, $style_url, array(), $script_asset['version'], 'all' );
+			wp_style_add_data( INSERT_POST_BLOCK_SLUG, 'rtl', 'replace' );
 			// Enqueue the script.
 			wp_enqueue_script( INSERT_POST_BLOCK_SLUG, $script_url, $script_asset['dependencies'], $script_asset['version'], true );
 			wp_set_script_translations( INSERT_POST_BLOCK_SLUG, 'insert-post-block', sprintf( '%s/languages/', INSERT_POST_BLOCK_DIR_PATH ) );

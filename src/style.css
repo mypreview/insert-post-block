@@ -1,5 +1,20 @@
 .wp-block-insert-post-block-content {
 
+	.components-placeholder {
+
+		.components-base-control {
+			width: 100%;
+
+			&__label {
+				display: block;
+
+				+ select {
+					min-width: 100%;
+				}
+			}
+		}
+	}
+
 	.components-notice {
 		margin-left: 0;
 		margin-right: 0;

@@ -6,9 +6,12 @@
  * WordPress dependencies
  */
 const { apiFetch } = wp;
+const { addQueryArgs } = wp.url;
 
-const restFetch = ( args ) =>
-	apiFetch( args )
+const restFetch = ( endpoint, args = { per_page: -1 } ) =>
+	apiFetch( {
+		path: addQueryArgs( `/wp/v2/${ endpoint }`, args ),
+	} )
 		.then( ( data ) => data )
 		.catch( ( error ) => error );
 

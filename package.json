@@ -61,6 +61,7 @@
 		"postcss-selector-not": "^4.0.0",
 		"postcss-size": "^3.0.0",
 		"progress-bar-webpack-plugin": "^2.1.0",
+		"rename-keys": "^2.0.1",
 		"webpack-notifier": "^1.8.0",
 		"webpack-rtl-plugin": "^2.0.0"
 	},

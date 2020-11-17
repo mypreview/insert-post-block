@@ -8,7 +8,7 @@ const attributes = {
 		default: '',
 	},
 	id: {
-		type: 'number',
+		type: 'string',
 		default: '',
 	},
 };

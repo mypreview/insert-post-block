@@ -104,6 +104,7 @@ if ( ! class_exists( 'Insert_Post_Block' ) ) :
 		protected function __construct() {
 			add_action( 'init', array( $this, 'textdomain' ) );
 			add_action( 'enqueue_block_editor_assets', array( $this, 'editor_enqueue' ) );
+			add_shortcode( INSERT_POST_BLOCK_PREFIX, array( $this, 'shortcode' ) );
 			add_filter( sprintf( 'plugin_action_links_%s', INSERT_POST_BLOCK_PLUGIN_BASENAME ), array( $this, 'additional_links' ) );
 		}
 
@@ -171,6 +172,42 @@ if ( ! class_exists( 'Insert_Post_Block' ) ) :
 					'author_uri'  => INSERT_POST_BLOCK_AUTHOR_URI,
 				)
 			);
+		}
+
+		/**
+		 * Displays specific post based on given/selected post-id.
+		 *
+		 * @access   public
+		 * @since    1.0.0
+		 * @param    array $atts      Shortcode attributes. Optional.
+		 * @return   string|false
+		 */
+		public function shortcode( $atts ) {
+			$atts = shortcode_atts(
+				array(
+					'id'   => false,
+					'type' => 'posts',
+				),
+				$atts
+			);
+
+			$id = $atts['id'];
+
+			// Bail early, in case the given post-id is not a number or a numeric string.
+			if ( ! is_numeric( $id ) ) {
+				return '';
+			}
+
+			// Retrieves post data given a post ID or post object.
+			$post = sanitize_post( get_post( $id ), 'display' );
+
+			// يetermine whether the post variable is an instantiated object of the WP_Post class.
+			if ( ! ( $post instanceof WP_Post ) ) {
+				return '';
+			}
+
+			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+			return apply_filters( 'the_content', $post->post_content, $post, $atts );
 		}
 
 		/**

@@ -3,13 +3,13 @@
  */
 import { eq, map, get, filter, isEmpty, isUndefined, pick, isPlainObject, forEach, set, trim, parseInt } from 'lodash';
 import classnames from 'classnames';
-import ifArray from './../utils/if-array';
-import restFetch from './../utils/rest-fetch';
-import postTypes from './../utils/post-types';
-import generateOptions from './../utils/generate-options';
-import optionNone from './../utils/option-none';
-import applyWithSelect from './../utils/with-select';
-import { SLUG, PREFIX } from './../utils/prefix';
+import ifArray from './utils/if-array';
+import restFetch from './utils/rest-fetch';
+import postTypes from './utils/post-types';
+import generateOptions from './utils/generate-options';
+import optionNone from './utils/option-none';
+import applyWithSelect from './utils/with-select';
+import { PREFIX } from './utils/prefix';
 
 /**
  * WordPress dependencies
@@ -20,7 +20,6 @@ const { compose } = wp.compose;
 const { BlockControls } = wp.blockEditor;
 const { Placeholder, SelectControl, Dashicon, Notice, Spinner, Button, Toolbar, Disabled } = wp.components;
 const { decodeEntities } = wp.htmlEntities;
-const BLOCK_CLASSNAME = sprintf( 'wp-block-%s-insert-post-block', PREFIX );
 const QUERY_ARGS = { per_page: -1 };
 
 class Edit extends Component {
@@ -158,7 +157,7 @@ class Edit extends Component {
 					{ !! isSelecting ? (
 						<Placeholder
 							icon={ <Dashicon icon="admin-post" /> }
-							className={ `${ SLUG }-placeholder` }
+							className={ `${ PREFIX }-placeholder` }
 							label={ __( 'Post', 'insert-post-block' ) }
 							instructions={ __(
 								'Select a post to display from the dropdown menu below:',
@@ -244,7 +243,6 @@ class Edit extends Component {
 															sprintf( '%s-item', type ),
 															type,
 															'hentry',
-															sprintf( '%s__content', BLOCK_CLASSNAME )
 														) }
 													>
 														<RawHTML>

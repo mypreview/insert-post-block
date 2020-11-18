@@ -3,11 +3,11 @@
  */
 import { eq, map, get, filter, isEmpty, isUndefined, pick, isPlainObject, forEach, set, trim, parseInt } from 'lodash';
 import classnames from 'classnames';
+import Controls from './controls';
 import ifArray from './utils/if-array';
 import restFetch from './utils/rest-fetch';
 import postTypes from './utils/post-types';
 import generateOptions from './utils/generate-options';
-import optionNone from './utils/option-none';
 import applyWithSelect from './utils/with-select';
 import { PREFIX } from './utils/prefix';
 
@@ -17,8 +17,7 @@ import { PREFIX } from './utils/prefix';
 const { __, sprintf } = wp.i18n;
 const { Fragment, Component, RawHTML } = wp.element;
 const { compose } = wp.compose;
-const { BlockControls } = wp.blockEditor;
-const { Placeholder, SelectControl, Dashicon, Notice, Spinner, Button, Toolbar, Disabled } = wp.components;
+const { Placeholder, SelectControl, Dashicon, Notice, Spinner, Button, Disabled } = wp.components;
 const { decodeEntities } = wp.htmlEntities;
 const QUERY_ARGS = { per_page: -1 };
 
@@ -100,7 +99,7 @@ class Edit extends Component {
 	};
 
 	// Remove the `Placeholder` component from the view on `Submit`.
-	onSubmit = ( isSelecting = false ) => {
+	onSubmit = () => {
 		const { id } = this.props.attributes;
 		if ( ! isEmpty( id ) ) {
 			this.setState( {
@@ -221,19 +220,11 @@ class Edit extends Component {
 									{ !! hasPostList ? (
 										<Disabled>
 											{ isSelected && (
-												<Fragment>
-													<BlockControls>
-														<Toolbar
-															controls={ [
-																{
-																	icon: <Dashicon icon="edit" />,
-																	title: __( 'Edit', 'insert-post-block' ),
-																	onClick: () => this.fetchPosts( type ),
-																},
-															] }
-														/>
-													</BlockControls>
-												</Fragment>
+												<Controls
+													{ ...this.props }
+													type={ type }
+													fetchPosts={ this.fetchPosts }
+												/>
 											) }
 											{ ifArray( wpQuery ) ? (
 												map( wpQuery, ( post ) => (
@@ -242,7 +233,7 @@ class Edit extends Component {
 														className={ classnames(
 															sprintf( '%s-item', type ),
 															type,
-															'hentry',
+															'hentry'
 														) }
 													>
 														<RawHTML>

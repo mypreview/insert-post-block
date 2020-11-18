@@ -6,7 +6,8 @@ import './style.css';
 /**
  * External dependencies
  */
-import edit from './components/edit';
+import edit from './edit';
+import save from './save';
 import attributes from './utils/attributes';
 import { PREFIX } from './utils/prefix';
 import './utils/category';
@@ -19,6 +20,7 @@ const { registerBlockType } = wp.blocks;
 
 registerBlockType( `${ PREFIX }/content`, {
 	edit,
+	save,
 	attributes,
 	category: 'mypreview',
 	title: _x( 'Insert Post', 'block name', 'insert-post-block' ),
@@ -38,8 +40,4 @@ registerBlockType( `${ PREFIX }/content`, {
 		_x( 'query', 'block keyword', 'insert-post-block' ),
 		_x( 'post', 'block keyword', 'insert-post-block' ),
 	],
-	save() {
-		// Handled by PHP.
-		return null;
-	},
 } );

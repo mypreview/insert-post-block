@@ -15,10 +15,13 @@ const LicenseCheckerWebpackPlugin = require( 'license-checker-webpack-plugin' );
 module.exports = {
 	...defaultConfig,
 	entry: {
-		block: path.resolve( process.cwd(), 'src', 'index.js' ),
+		editor: path.resolve( process.cwd(), 'src', 'index.js' ),
 	},
 	optimization: {
 		...defaultConfig.optimization,
+		splitChunks: {
+			automaticNameDelimiter: '--',
+		},
 		minimizer: [
 			...defaultConfig.optimization.minimizer,
 			new OptimizeCSSAssetsPlugin( {

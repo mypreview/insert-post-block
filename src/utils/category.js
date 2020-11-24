@@ -3,21 +3,24 @@
  */
 
 /**
- * Block dependencies
+ * External dependencies
  */
-import icons from './icons.js';
+import { eq, filter, concat } from 'lodash';
+import icons from './icons';
 
 /**
- * Internal block libraries
+ * WordPress dependencies
  */
 const { _x } = wp.i18n;
 const { getCategories, setCategories } = wp.blocks;
 
-setCategories( [
-	{
-		slug: 'mypreview',
-		title: _x( 'MyPreview', 'block category', 'insert-post-block' ),
-		icon: icons.mypreview,
-	},
-	...getCategories().filter( ( { slug } ) => slug !== 'mypreview' ),
-] );
+const categories = filter( getCategories(), ( { slug } ) => ! eq( slug, 'mypreview' ) ),
+	category = [
+		{
+			slug: 'mypreview',
+			title: _x( 'MyPreview', 'block category', 'insert-post-block' ),
+			icon: icons.mypreview,
+		},
+	];
+
+setCategories( concat( category, categories ) );

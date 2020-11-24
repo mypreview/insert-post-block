@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2020-11-10T01:09:41+00:00\n"
+"POT-Creation-Date: 2020-11-24T09:53:18+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.4.0\n"
 "X-Domain: insert-post-block\n"
@@ -34,30 +34,121 @@ msgstr ""
 msgid "https://mahdiyazdani.com"
 msgstr ""
 
-#: insert-post-block.php:118
+#: insert-post-block.php:120
 msgctxt "clone"
 msgid "Cloning instances of this class is forbidden."
 msgstr ""
 
-#: insert-post-block.php:129
+#: insert-post-block.php:131
 msgctxt "wakeup"
 msgid "Unserializing instances of this class is forbidden."
 msgstr ""
 
 #. translators: 1: Open anchor tag, 2: Close anchor tag.
-#: insert-post-block.php:183
+#: insert-post-block.php:245
 msgctxt "plugin link"
 msgid "%1$sHire Me!%2$s"
 msgstr ""
 
 #. translators: 1: Open anchor tag, 2: Close anchor tag.
-#: insert-post-block.php:183
+#: insert-post-block.php:245
 msgctxt "upsell"
 msgid "Looking for help? Hire Me!"
 msgstr ""
 
 #. translators: 1: Open anchor tag, 2: Close anchor tag.
-#: insert-post-block.php:185
+#: insert-post-block.php:247
 msgctxt "plugin link"
 msgid "%1$sSupport%2$s"
+msgstr ""
+
+#: build/block.js:815
+#: src/controls.js:20
+msgid "Edit"
+msgstr ""
+
+#: build/block.js:1061
+msgid "Error: No post is selected!"
+msgstr ""
+
+#: build/block.js:1139
+msgid "Post"
+msgstr ""
+
+#: build/block.js:1140
+msgid "Select a post to display from the dropdown menu below:"
+msgstr ""
+
+#: build/block.js:1147
+msgid "No post types found."
+msgstr ""
+
+#: build/block.js:1148
+msgid "Post type:"
+msgstr ""
+
+#: build/block.js:1153
+msgid "Post:"
+msgstr ""
+
+#: build/block.js:1165
+msgid "Submit"
+msgstr ""
+
+#: build/block.js:1165
+msgid "Fetching post…"
+msgstr ""
+
+#: build/block.js:1172
+msgid "(no content)"
+msgstr ""
+
+#: build/block.js:1176
+msgid "It seems this post has been deleted or not available to query at the moment."
+msgstr ""
+
+#: build/block.js:1179
+msgid "No post to display."
+msgstr ""
+
+#: build/block.js:1230
+#: src/index.js:26
+msgctxt "block name"
+msgid "Insert Post"
+msgstr ""
+
+#: build/block.js:1240
+#: src/index.js:38
+msgctxt "block keyword"
+msgid "embed"
+msgstr ""
+
+#: build/block.js:1240
+#: src/index.js:39
+msgctxt "block keyword"
+msgid "include"
+msgstr ""
+
+#: build/block.js:1240
+#: src/index.js:40
+msgctxt "block keyword"
+msgid "query"
+msgstr ""
+
+#: build/block.js:1240
+#: src/index.js:41
+msgctxt "block keyword"
+msgid "post"
+msgstr ""
+
+#: build/block.js:1339
+#: src/utils/category.js:19
+msgctxt "block category"
+msgid "MyPreview"
+msgstr ""
+
+#. translators: 1: HTML long dash.
+#: build/block.js:1517
+#: src/utils/option-none.js:13
+msgid "%1$s Select %1$s"
 msgstr ""

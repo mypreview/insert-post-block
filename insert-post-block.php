@@ -151,10 +151,11 @@ if ( ! class_exists( 'Insert_Post_Block' ) ) :
 		 * @return   void
 		 */
 		public function editor_enqueue() {
-			$style_url         = sprintf( '%sbuild/style-block.css', INSERT_POST_BLOCK_DIR_URL );
-			$script_url        = sprintf( '%sbuild/block.js', INSERT_POST_BLOCK_DIR_URL );
-			$script_path       = sprintf( '%sbuild/block.js', INSERT_POST_BLOCK_DIR_PATH );
-			$script_asset_path = sprintf( '%sbuild/block.asset.php', INSERT_POST_BLOCK_DIR_PATH );
+			$asset_name        = 'editor';
+			$style_url         = sprintf( '%sbuild/%s.css', INSERT_POST_BLOCK_DIR_URL, $asset_name );
+			$script_url        = sprintf( '%sbuild/%s.js', INSERT_POST_BLOCK_DIR_URL, $asset_name );
+			$script_path       = sprintf( '%sbuild/%s.js', INSERT_POST_BLOCK_DIR_PATH, $asset_name );
+			$script_asset_path = sprintf( '%sbuild/%s.asset.php', INSERT_POST_BLOCK_DIR_PATH, $asset_name );
 			$script_asset      = file_exists( $script_asset_path ) ? require $script_asset_path : array(
 				'dependencies' => array( 'wp-blocks', 'wp-dom-ready', 'lodash' ),
 				'version'      => filemtime( $script_path ),

@@ -22,8 +22,8 @@
 		"check-engines": "wp-scripts check-engines",
 		"check-licenses": "wp-scripts check-licenses",
 		"format:js": "wp-scripts format-js",
-		"lint:css": "wp-scripts lint-style src/",
-		"lint:css-fix": "wp-scripts lint-style src/ --fix",
+		"lint:css": "wp-scripts lint-style 'src/**/*.css'",
+		"lint:css-fix": "wp-scripts lint-style 'src/**/*.css' --fix",
 		"lint:js": "wp-scripts lint-js src/",
 		"lint:js-fix": "wp-scripts lint-js src/ --fix",
 		"lint:md:docs": "wp-scripts lint-md-docs",
@@ -45,7 +45,9 @@
 		"autoprefixer": "^9.8.6",
 		"chalk": "^4.1.0",
 		"classnames": "^2.2.6",
+		"husky": "^4.3.0",
 		"license-checker-webpack-plugin": "^0.1.5",
+		"lint-staged": "^10.5.1",
 		"lodash": "^4.17.20",
 		"moment": "^2.29.1",
 		"optimize-css-assets-webpack-plugin": "^5.0.4",
@@ -66,7 +68,24 @@
 		"webpack-rtl-plugin": "^2.0.0"
 	},
 	"engines": {
-		"node": ">=10.10.0",
-		"npm": ">=6.4.0"
+		"node": "12.19.1",
+		"npm": "6.14.8"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.css": [
+			"npm run lint:css-fix"
+		],
+		"*.js": [
+			"npm run lint:js-fix",
+			"npm run format:js"
+		],
+		"*.php": [
+			"npm run lint:wpcs-fix"
+		]
 	}
 }

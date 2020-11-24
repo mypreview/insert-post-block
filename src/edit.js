@@ -3,7 +3,7 @@
  */
 import { eq, map, get, filter, isEmpty, isUndefined, pick, isPlainObject, forEach, set, trim, parseInt } from 'lodash';
 import classnames from 'classnames';
-import Controls from './controls';
+import controls from './controls';
 import ifArray from './utils/if-array';
 import restFetch from './utils/rest-fetch';
 import postTypes from './utils/post-types';
@@ -15,7 +15,7 @@ import { PREFIX } from './utils/prefix';
  * WordPress dependencies
  */
 const { __, sprintf } = wp.i18n;
-const { Fragment, Component, RawHTML } = wp.element;
+const { Component, RawHTML } = wp.element;
 const { compose } = wp.compose;
 const { Placeholder, SelectControl, Dashicon, Notice, Spinner, Button, Disabled } = wp.components;
 const { decodeEntities } = wp.htmlEntities;
@@ -151,7 +151,7 @@ class Edit extends Component {
 			hasError = ! isEmpty( errorMsg );
 
 		return (
-			<Fragment>
+			<>
 				<div className={ className }>
 					{ !! isSelecting ? (
 						<Placeholder
@@ -171,13 +171,13 @@ class Edit extends Component {
 							{ ( ! hasPostList || ! hasTypeList ) && !! isLoading ? (
 								<Spinner />
 							) : (
-								<Fragment>
+								<>
 									{ ! hasTypeList && ! isLoading ? (
 										<Notice status="warning" isDismissible={ false }>
 											{ __( 'No post types found.', 'insert-post-block' ) }
 										</Notice>
 									) : (
-										<Fragment>
+										<>
 											<SelectControl
 												label={ __( 'Post type:', 'insert-post-block' ) }
 												options={ typeList }
@@ -187,7 +187,7 @@ class Edit extends Component {
 											{ !! isLoading ? (
 												<Spinner />
 											) : (
-												<Fragment>
+												<>
 													<SelectControl
 														label={ __( 'Post:', 'insert-post-block' ) }
 														options={ postList }
@@ -201,35 +201,29 @@ class Edit extends Component {
 													>
 														{ __( 'Submit', 'insert-post-block' ) }
 													</Button>
-												</Fragment>
+												</>
 											) }
-										</Fragment>
+										</>
 									) }
-								</Fragment>
+								</>
 							) }
 						</Placeholder>
 					) : (
-						<Fragment>
+						<>
 							{ ! hasPostList && !! isLoading ? (
 								<p>
 									{ __( 'Fetching post…', 'insert-post-block' ) }
 									<Spinner />
 								</p>
 							) : (
-								<Fragment>
+								<>
 									{ !! hasPostList ? (
 										<Disabled>
-											{ isSelected && (
-												<Controls
-													{ ...this.props }
-													type={ type }
-													fetchPosts={ this.fetchPosts }
-												/>
-											) }
+											{ isSelected && controls( type, this.fetchPosts ) }
 											{ ifArray( wpQuery ) ? (
 												map( wpQuery, ( post ) => (
 													<div
-														id={ sprintf( '%s-%s', type, get( post, id ) ) }
+														id={ `${ type }-${ get( post, id ) }` }
 														className={ classnames(
 															sprintf( '%s-item', type ),
 															type,
@@ -257,12 +251,12 @@ class Edit extends Component {
 											{ __( 'No post to display.', 'insert-post-block' ) }
 										</Notice>
 									) }
-								</Fragment>
+								</>
 							) }
-						</Fragment>
+						</>
 					) }
 				</div>
-			</Fragment>
+			</>
 		);
 	}
 }

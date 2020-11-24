@@ -105,6 +105,7 @@ if ( ! class_exists( 'Insert_Post_Block' ) ) :
 			add_action( 'init', array( $this, 'textdomain' ) );
 			add_action( 'enqueue_block_editor_assets', array( $this, 'editor_enqueue' ) );
 			add_shortcode( INSERT_POST_BLOCK_PREFIX, array( $this, 'shortcode' ) );
+			add_filter( 'register_post_type_args', array( $this, 'wp_block_args' ), 11, 2 );
 			add_filter( sprintf( 'plugin_action_links_%s', INSERT_POST_BLOCK_PLUGIN_BASENAME ), array( $this, 'additional_links' ) );
 		}
 
@@ -201,13 +202,32 @@ if ( ! class_exists( 'Insert_Post_Block' ) ) :
 			// Retrieves post data given a post ID or post object.
 			$post = sanitize_post( get_post( $id ), 'display' );
 
-			// يetermine whether the post variable is an instantiated object of the WP_Post class.
+			// Determine whether the post variable is an instantiated object of the WP_Post class.
 			if ( ! ( $post instanceof WP_Post ) ) {
 				return '';
 			}
 
 			// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 			return apply_filters( 'the_content', $post->post_content, $post, $atts );
+		}
+
+		/**
+		 * Modify the arguments for the core `Reusable` post type.
+		 *
+		 * @access   public
+		 * @since    1.0.0
+		 * @param    array  $args           Array of arguments for registering a post type.
+		 * @param    string $post_type      Post type key.
+		 * @return   array
+		 */
+		public function wp_block_args( $args, $post_type ) {
+			require_once sprintf( '%sincludes/class-insert-post-block-reusable-controller.php', INSERT_POST_BLOCK_DIR_PATH );
+
+			if ( ! ! $post_type && 'wp_block' === $post_type ) {
+				$args['rest_controller_class'] = 'Insert_Post_Block_Reusable_Controller';
+			}
+
+			return $args;
 		}
 
 		/**

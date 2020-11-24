@@ -5,7 +5,7 @@
 /**
  * External dependencies
  */
-import { chain, map, concat, keys, mapKeys, first, split } from 'lodash';
+import { chain, map, concat, keys, mapKeys, first, split } from 'lodash'; /* eslint-disable-line no-unused-vars */
 import renameKeys from 'rename-keys';
 import deepPick from './deep-pick';
 import optionNone from './option-none';

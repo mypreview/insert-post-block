@@ -21,9 +21,9 @@
  * @wordpress-plugin
  * Plugin Name:             Insert Post Block
  * Plugin URI:              https://www.mypreview.one
- * Description:             XXX.
+ * Description:             A lightweight editor block that allows you to embed a full post content to different pages.
  * Version:                 1.0.0
- * Requires at least:       WordPress 5.2
+ * Requires at least:       WordPress 5.3
  * Requires PHP:            7.2.0
  * Author:                  MyPreview
  * Author URI:              https://mahdiyazdani.com

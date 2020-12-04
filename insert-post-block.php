@@ -16,7 +16,7 @@
  * @since                   1.0.0
  * @package                 insert-post-block
  * @author                  MyPreview (Github: @mahdiyazdani, @mypreview)
- * @copyright               © 2015 - 2020 MyPreview. All Rights Reserved.
+ * @copyright               © 2015 - 2021 MyPreview. All Rights Reserved.
  *
  * @wordpress-plugin
  * Plugin Name:             Insert Post Block

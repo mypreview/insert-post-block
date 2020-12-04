@@ -5,7 +5,7 @@
 /**
  * External dependencies
  */
-import { eq, filter, concat } from 'lodash';
+import { eq, get, filter, concat } from 'lodash';
 import icons from './icons';
 
 /**
@@ -19,7 +19,7 @@ const categories = filter( getCategories(), ( { slug } ) => ! eq( slug, 'myprevi
 		{
 			slug: 'mypreview',
 			title: _x( 'MyPreview', 'block category', 'insert-post-block' ),
-			icon: icons.mypreview,
+			icon: get( icons, 'mypreview' ),
 		},
 	];
 

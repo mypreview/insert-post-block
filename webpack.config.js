@@ -41,7 +41,7 @@ module.exports = {
 				chalk.blue( 'Build core script' ) + ' [:bar] ' + chalk.green( ':percent' ) + ' :msg (:elapsed seconds)',
 		} ),
 		new LicenseCheckerWebpackPlugin( {
-			outputFilename: './../credits.txt',
+			outputFilename: './credits.txt',
 		} ),
 		new WebpackNotifierPlugin( {
 			title: 'Insert Post Block',

@@ -1,6 +1,6 @@
 === Insert Post Block ===
 Contributors: mahdiyazdani, mypreview, gookaani
-Tags: content, embed, shortcode, block, page, post
+Tags: blocks, gutenberg, gutenberg blocks, block-editor, embed, shortcode, page, post
 Donate link: https://www.mypreview.one
 Requires at least: 5.3
 Tested up to: 5.6
@@ -36,6 +36,12 @@ The manual installation method requires downloading the plugin and uploading it 
 Automatic updates should work smoothly, but we still recommend you back up your site.
 
 == Frequently Asked Questions ==
+= Which post types are supported? =
+Currently, the following readily available to users, and internally used by the WordPress post types are supported:
+* Posts
+* Pages
+* Blocks (Reusable)
+
 = How do I get help with the plugin? =
 The easiest way to receive support is to “Create a new topic” by visiting Community Forums page [here](https://wordpress.org/support/plugin/insert-post-block "Insert Post Block Support Forum").
 
@@ -63,6 +69,7 @@ Professional engineer and independent creative technologist in tech · over 6 ye
 
 == Screenshots ==
 1. Editor block.
+2. Block icon within the block-inserter menu.
 
 == Changelog ==
 = 1.0.0 =

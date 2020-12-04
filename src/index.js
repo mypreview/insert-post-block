@@ -1,4 +1,9 @@
 /**
+ * External dependencies
+ */
+import get from 'lodash/get';
+
+/**
  * Stylesheet dependencies.
  */
 import './style.css';
@@ -8,7 +13,8 @@ import './style.css';
  */
 import edit from './edit';
 import save from './save';
-import attributes from './utils/attributes';
+import attributes from './attributes';
+import icons from './utils/icons';
 import { PREFIX } from './utils/prefix';
 import './utils/category';
 
@@ -24,9 +30,9 @@ registerBlockType( `${ PREFIX }/content`, {
 	attributes,
 	category: 'mypreview',
 	title: _x( 'Insert Post', 'block name', 'insert-post-block' ),
-	description: _x( '', 'block description', 'insert-post-block' ),
+	description: _x( 'Embed a full post content to different pages.', 'block description', 'insert-post-block' ),
 	icon: {
-		src: 'media-text',
+		src: get( icons, 'insert' ),
 	},
 	supports: {
 		anchor: true,
